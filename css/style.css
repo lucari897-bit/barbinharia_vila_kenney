@@ -1,0 +1,130 @@
+/* ===== Barbinharia — mobile first ===== */
+:root{
+  --color-black:#080808; --color-ink:#121214; --color-card:#17171a; --color-white:#fff; --color-gray:#bdbdbd;
+  --color-red:#d71920; --color-red-dark:#b01218; --color-blue:#315a91; --color-navy:#172b4d;
+  --font-title:'Anton','Impact','Arial Narrow',sans-serif; --font-text:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --radius:14px; --shadow:0 8px 24px rgba(0,0,0,.45); --ease:.25s ease; --space:clamp(3.5rem,9vw,6.5rem); --header-h:64px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--header-h);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--color-black);color:var(--color-white);font:400 1rem/1.6 var(--font-text);overflow-x:hidden;padding-bottom:84px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-title);text-transform:uppercase;letter-spacing:.03em;font-weight:400;line-height:1.05;margin:0 0 .6em}
+h1{font-size:clamp(2.8rem,13vw,5.5rem)} h2{font-size:clamp(2rem,8vw,3.2rem);position:relative;padding-bottom:.4em}
+h2::after{content:"";display:block;width:56px;height:4px;margin-top:.4em;background:linear-gradient(90deg,var(--color-red) 70%,var(--color-blue) 70%)}
+.center h2::after{margin-inline:auto} h3{font-size:1.3rem}
+.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:1.1rem}
+.section{padding-block:var(--space)} .alt{background:var(--color-ink)} .center{text-align:center}
+:focus-visible{outline:3px solid var(--color-blue);outline-offset:3px}
+.ic{width:1.2em;height:1.2em;flex:none}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:48px;padding:.8rem 1.4rem;border-radius:10px;border:2px solid transparent;font:700 .9rem var(--font-text);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform var(--ease),background var(--ease),box-shadow var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn-red{background:var(--color-red);color:#fff}.btn-red:hover{background:var(--color-red-dark)}
+.btn-blue{background:var(--color-blue);color:#fff}.btn-blue:hover{background:var(--color-navy)}
+.btn-ghost{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn-ghost:hover{background:#fff;color:#000}
+.btn-lg{width:100%;min-height:56px;font-size:1rem}.btn-sm{min-height:44px;font-size:.8rem;padding:.5rem 1rem}
+.actions{display:flex;flex-direction:column;gap:.8rem;margin-top:1.5rem}
+
+/* Header */
+.header{position:fixed;inset:0 0 auto;z-index:50;background:rgba(0,0,0,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08);transition:background var(--ease),box-shadow var(--ease)}
+.header.scrolled{background:rgba(8,8,8,.96);box-shadow:0 4px 18px rgba(0,0,0,.6)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h);transition:height var(--ease)}
+.brand img{height:50px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.7));transition:height var(--ease)}
+.header.scrolled .brand img{height:40px}
+.burger{width:48px;height:48px;background:none;border:0;display:grid;place-content:center;gap:6px;cursor:pointer;z-index:2}
+.burger span{width:26px;height:3px;background:#fff;border-radius:2px;transition:transform var(--ease),opacity var(--ease)}
+.burger[aria-expanded=true] span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.burger[aria-expanded=true] span:nth-child(2){opacity:0}
+.burger[aria-expanded=true] span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+.menu{position:fixed;inset:0;background:var(--color-black);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1.4rem;padding:5rem 1.5rem 2rem;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity var(--ease),transform var(--ease),visibility var(--ease);z-index:1}
+.menu.open{opacity:1;visibility:visible;transform:none}
+.menu a:not(.btn){font:400 2rem var(--font-title);text-transform:uppercase;text-decoration:none;letter-spacing:.05em;transition:color var(--ease)}
+.menu a:not(.btn):hover{color:var(--color-red)} .menu .btn{width:100%;max-width:320px;min-height:56px}
+
+/* Hero: foto oficial como fundo */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;padding:calc(var(--header-h) + 1.5rem) 0 5.5rem;color:#fff;
+  background:
+    radial-gradient(120% 100% at 60% 40%,transparent 55%,rgba(0,0,0,.55) 100%),
+    linear-gradient(0deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.7) 38%,rgba(0,0,0,.15) 70%,rgba(0,0,0,.35) 100%),
+    url("../assets/images/hero-barbinharia.jpg") 62% center/cover no-repeat,var(--color-black)}
+.hero-content{position:relative}
+.eyebrow{color:#fff;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;margin:0 0 .8rem;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.eyebrow span{color:var(--color-red)}
+.hero h1{text-shadow:0 2px 14px rgba(0,0,0,.45)}.hero h1 span{color:var(--color-red)}
+.lead{font-size:1.05rem;color:#e6e6e6;max-width:32rem;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.scroll-cue{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-decoration:none;opacity:.85}
+.scroll-cue i{font-style:normal;font-size:1.2rem;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+.cta .eyebrow{color:var(--color-red)}
+
+/* Sobre */
+.split{display:grid;gap:2rem;align-items:center}.rounded{border-radius:var(--radius);aspect-ratio:1;object-fit:cover;box-shadow:var(--shadow)}
+.highlights{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;gap:.7rem}
+.highlights li{padding:.8rem 1rem;background:var(--color-card);border-left:4px solid var(--color-red);border-radius:8px;font-weight:700}
+.highlights li:nth-child(2){border-color:var(--color-blue)}
+
+/* Equipe: carrossel horizontal no celular */
+.card{background:var(--color-card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform var(--ease),border-color var(--ease)}
+.card:hover{transform:translateY(-4px);border-color:rgba(215,25,32,.6)}
+.team{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-1.1rem;padding:.5rem 1.1rem 1rem;-webkit-overflow-scrolling:touch}
+.barber{flex:0 0 78%;max-width:320px;scroll-snap-align:center;overflow:hidden}
+.barber img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.barber-body{padding:1rem 1rem 1.2rem}.barber-body p{margin:.3rem 0 .9rem;color:var(--color-gray);font-size:.95rem}
+.barber .tag{color:var(--color-red);font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;margin:0}
+
+/* Galeria */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+.g-item{display:block;overflow:hidden;border-radius:12px;box-shadow:var(--shadow);aspect-ratio:1}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}.g-item:hover img{transform:scale(1.06)}
+
+/* Localização */
+.loc{display:grid;gap:1.2rem}.info{padding:1.4rem}.pin{display:flex;gap:.5rem;align-items:center;color:var(--color-red);margin:0}
+address{font-style:normal;margin:.6rem 0}.info a[data-tel]{color:var(--color-white);font-weight:700}
+.hours{display:grid;grid-template-columns:1fr auto;gap:.5rem 1rem;margin:0 0 1.4rem;padding:1rem;background:var(--color-black);border-radius:10px}
+.hours dt{color:var(--color-gray)}.hours dd{margin:0;font-weight:700;text-align:right}
+.map{width:100%;min-height:300px;border:0;border-radius:var(--radius);filter:grayscale(.4) contrast(1.05)}
+
+/* CTA / Footer */
+.cta{padding-block:var(--space);text-align:center;background:linear-gradient(135deg,var(--color-navy),var(--color-black) 55%,#3a0a0c)}
+.cta .btn{max-width:420px}.cta .lead{margin-inline:auto}
+.footer{background:#000;border-top:1px solid rgba(255,255,255,.1);padding-top:3rem}
+.foot{display:grid;gap:2rem}.foot nav{display:grid;gap:.4rem}.foot nav a{padding:.35rem 0;text-decoration:none;color:var(--color-gray);transition:color var(--ease)}.foot nav a:hover{color:var(--color-red)}
+.foot-logo{width:110px;height:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.7));margin-bottom:1rem}
+.copy{text-align:center;color:var(--color-gray);font-size:.85rem;margin:2rem 0 0;padding:1.2rem 1rem;border-top:1px solid rgba(255,255,255,.08)}
+
+/* Botão flutuante (celular) */
+.fab{position:fixed;left:1rem;right:1rem;bottom:max(1rem,env(safe-area-inset-bottom));z-index:40;display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:56px;border-radius:14px;background:var(--color-red);color:#fff;font:700 1rem var(--font-text);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 28px rgba(215,25,32,.45)}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;padding:1rem}
+.lightbox[hidden]{display:none}.lightbox img{max-height:82vh;max-width:100%;object-fit:contain;border-radius:8px}
+.lightbox button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:2rem;line-height:1;cursor:pointer}
+.lb-close{top:1rem;right:1rem}.lb-prev{left:.5rem;top:50%}.lb-next{right:.5rem;top:50%}
+
+/* Animações de entrada */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.reveal.show{opacity:1;transform:none}
+
+/* Tablet */
+@media(min-width:768px){
+  .actions{flex-direction:row;flex-wrap:wrap}.btn-lg{width:auto}
+  .split{grid-template-columns:1fr 1fr;align-items:center}
+  .gallery{grid-template-columns:repeat(3,1fr);gap:1rem}
+  .loc{grid-template-columns:1fr 1fr}.foot{grid-template-columns:2fr 1fr 1fr}
+  .team{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:0}.barber{max-width:none}
+}
+/* Desktop: menu horizontal, sem FAB, equipe 5 colunas */
+@media(min-width:1024px){
+  body{padding-bottom:0}.fab,.burger{display:none}
+  .menu{position:static;flex-direction:row;background:none;opacity:1;visibility:visible;transform:none;padding:0;gap:1.6rem;inset:auto}
+  .menu a:not(.btn){font:700 .85rem var(--font-text);letter-spacing:.12em}.menu .btn{width:auto;min-height:44px;font-size:.85rem}
+  .team{grid-template-columns:repeat(5,1fr);gap:1rem}.barber-body{padding:.9rem}.barber-body h3{font-size:1.1rem}
+  .hero{align-items:center;padding-bottom:4rem;
+    background:radial-gradient(120% 100% at 60% 50%,transparent 55%,rgba(0,0,0,.5) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.62) 45%,rgba(0,0,0,.35) 100%),
+    url("../assets/images/hero-barbinharia.jpg") center 40%/cover no-repeat,var(--color-black)}
+  .hero-content{max-width:1200px}.hero-content>*{max-width:34rem}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
